@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Servicios en Línea IBERO</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+  <div class="hero is-fullheight">
+    <div class="hero-body is-justify-content-center is-align-items-center">
+      <div class="box login-box">
+        <h3 class="title has-text-grey has-text-centered">Servicios en Línea</h3>
+        <div class="box logo-box">
+          <div class="logo-placeholder">
+            <img src="imagenes/Logo-1.png" alt="IBERO" onerror="this.style.display='none'">
+          </div>
+        </div>
+        <form name="loginform" action="dashboard.html" method="get" autocomplete="off">
+          <div class="field">
+            <div class="control" style="display:flex;gap:8px;">
+              <input class="input is-medium" type="text" name="j_username" maxlength="6" autocomplete="off" style="width:180px;" placeholder="Cuenta">
+              <input class="input is-medium" type="text" name="digito" maxlength="1" autocomplete="off" style="width:130px;" placeholder="Dígito">
+            </div>
+          </div>
+          <div class="field">
+            <div class="control">
+              <input class="input is-medium" type="password" name="j_password" autocomplete="new-password" placeholder="Contraseña" style="width:100%;">
+            </div>
+          </div>
+          <div class="field">
+            <div class="recaptcha-mock">
+              <div class="recaptcha-check" id="rc-check" onclick="toggleCaptcha()"></div>
+              <span class="recaptcha-label">No soy un robot</span>
+              <div class="recaptcha-logo"><i class="fa-solid fa-shield-halved"></i><br>reCAPTCHA<br>Privacidad · Términos</div>
+            </div>
+            <div id="g-recaptcha-error"></div>
+          </div>
+          <div class="field">
+            <button type="submit" class="button is-danger is-medium is-outlined is-fullwidth" onclick="return checkCaptcha()">Iniciar sesión</button>
+          </div>
+          <div class="field">
+            <p class="login-links">
+              <a href="#">Olvide mi contraseña</a>
+              <a href="#" onclick="openHelp();return false;">Necesito ayuda</a>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div id="modal-ayuda" class="modal">
+    <div class="modal-background" onclick="closeHelp()"></div>
+    <div class="modal-card">
+      <header class="modal-card-head"><p class="modal-card-title">Ayuda</p><button class="delete" onclick="closeHelp()"></button></header>
+      <section class="modal-card-body">
+        <ul class="ayuda-list">
+          <li><strong>*Cambiar mi contraseña</strong><br>Al ingresar por primera vez te solicitará actualizar tu contraseña.</li>
+          <li><strong>*La contraseña debe ser de 10 caracteres</strong> con mayúscula, minúscula, número y carácter especial: * . - _ @ = | + &lt; &gt; % &amp; # $</li>
+          <li><strong>* ¿Por qué me pide correo electrónico?</strong><br>Será el medio para recuperar tu contraseña en cualquier momento.</li>
+          <li><strong>* ¿Cómo recupero mi contraseña?</strong><br>Servicios en Línea te enviará un correo con una liga válida por 2 horas.</li>
+          <li><strong>*No me llegó correo para recuperarla.</strong><br>Acude a Dirección de Servicios Escolares (Edif. N 1er piso).</li>
+          <li><strong>*Mi contraseña está bloqueada.</strong><br>Tras 30 intentos fallidos, selecciona "desbloquear mi cuenta" u "olvidé mi contraseña".</li>
+        </ul>
+      </section>
+      <footer class="modal-card-foot"><button class="button" onclick="closeHelp()">Cerrar</button></footer>
+    </div>
+  </div>
+  <script>
+    var captchaChecked = false;
+    function toggleCaptcha() {
+      captchaChecked = !captchaChecked;
+      var el = document.getElementById('rc-check');
+      if (captchaChecked) { el.classList.add('checked'); el.innerHTML = '<i class="fa-solid fa-check" style="font-size:14px;color:white;"></i>'; document.getElementById('g-recaptcha-error').innerHTML = ''; }
+      else { el.classList.remove('checked'); el.innerHTML = ''; }
+    }
+    function checkCaptcha() {
+      if (!captchaChecked) { document.getElementById('g-recaptcha-error').innerHTML = '<span style="color:red;font-size:12px;">Es necesario validar el captcha.</span>'; return false; }
+      return true;
+    }
+    function openHelp() { document.getElementById('modal-ayuda').classList.add('is-active'); }
+    function closeHelp() { document.getElementById('modal-ayuda').classList.remove('is-active'); }
+    document.addEventListener('keydown', function(e) { if (e.key==='Escape') closeHelp(); });
+  </script>
+</body>
+</html>
