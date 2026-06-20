@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Historia Académica - IBERO</title>
+  <link rel="stylesheet" href="./css/dashboard-styles.css">
+  <link rel="stylesheet" href="./css/historial-styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="sidebar-toggle" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></div>
+  <div class="topbar-logo">
+    <img src="../imagenes/Logo-2.png" alt="IBERO" onerror="this.outerHTML='<span>LOGO</span>'">
+  </div>
+  <div class="topbar-spacer"></div>
+  <div class="topbar-name">233207-2 PONCE MENDEZ LUIS EDUARDO</div>
+  <div class="topbar-timer">
+    <i class="fa-solid fa-clock"></i>
+    <span id="timer">28:38</span>
+  </div>
+  <div class="topbar-dropdown">
+    <div class="topbar-dropdown-trigger">
+      <span class="avatar-pill">LP</span>
+      <span>Mi Perfil</span>
+    </div>
+    <div class="dropdown-menu">
+      <a href="datos_personales.html"><i class="fa-solid fa-address-card"></i>Datos Personales</a>
+      <a href="#"><i class="fa-solid fa-flag"></i>Bloqueo</a>
+      <a href="#"><i class="fa-solid fa-comments"></i>Avisos</a>
+      <a href="#"><i class="fa-solid fa-user-lock"></i>Cambiar Contraseña</a>
+      <div class="dropdown-divider"></div>
+      <a href="../index.html"><i class="fa-solid fa-right-from-bracket"></i>Salir</a>
+    </div>
+  </div>
+</header>
+
+<div class="main-content">
+  <nav class="sidebar" id="sidebar">
+    <div class="mn" onclick="tog('sub-tes')"><i class="fa-solid fa-hand-holding-dollar ico"></i><span style="flex:1">Tesorería</span><i class="fa-solid fa-angle-down arr"></i></div>
+    <div class="sub" id="sub-tes">
+      <div class="si" onclick="window.location='dashboard.html'"><i class="fa-regular fa-credit-card"></i><span style="flex:1">Pagos en Línea</span></div>
+      <div class="si"><i class="fa-solid fa-file-invoice"></i><span style="flex:1">Pagos en Sucursal Bancaria</span></div>
+      <div class="si" onclick="tog('sub-fact')"><i class="fa-solid fa-file-invoice-dollar"></i><span style="flex:1">Servicios de Facturación</span><i class="fa-solid fa-angle-down arr"></i></div>
+      <div class="ssub" id="sub-fact">
+        <div class="ssi">Solicitar Factura</div>
+        <div class="ssi">Descargar Factura</div>
+        <div class="ssi">Editor Datos Fiscales</div>
+      </div>
+      <div class="si" onclick="tog('sub-cons')"><i class="fa-solid fa-chart-line"></i><span style="flex:1">Consultas</span><i class="fa-solid fa-angle-down arr"></i></div>
+      <div class="ssub" id="sub-cons">
+        <div class="ssi">Estado de Cuenta</div>
+        <div class="ssi">Adeudos</div>
+        <div class="ssi">Estado de Cuenta Monedero</div>
+        <div class="ssi">Últimos Pagos</div>
+        <div class="ssi">Presupuesto de Cuotas</div>
+      </div>
+      <div class="si"><i class="fa-brands fa-paypal"></i><span style="flex:1">Domiciliación (Exclusivo clientes Paypal)</span></div>
+    </div>
+    <div class="mn"><i class="fa-solid fa-graduation-cap ico"></i><span style="flex:1">Becas y Financiamiento</span></div>
+    <div class="mn" onclick="tog('sub-esc')"><i class="fa-solid fa-display ico"></i><span style="flex:1">Servicios Escolares</span><i class="fa-solid fa-angle-down arr"></i></div>
+    <div class="sub open" id="sub-esc">
+      <div class="si" onclick="tog('sub-datos')"><i class="fa-solid fa-rectangle-list"></i><span style="flex:1">Datos Escolares</span><i class="fa-solid fa-angle-down arr"></i></div>
+      <div class="ssub open" id="sub-datos">
+        <div class="ssi active">Historia Académica</div>
+        <div class="ssi">Materias Inscritas</div>
+        <div class="ssi">Situación Académica</div>
+        <div class="ssi">Horarios</div>
+      </div>
+      <div class="si"><i class="fa-solid fa-person-chalkboard"></i><span>Solicitud de Reinscripción</span></div>
+      <div class="si"><i class="fa-solid fa-tty"></i><span>Reservación Exam. Departamental</span></div>
+      <div class="si"><i class="fa-solid fa-arrows-down-to-line"></i><span>Bajas Totales</span></div>
+      <div class="si"><i class="fa-solid fa-file-lines"></i><span>Examen Extraordinario y a Título de Suficiencia</span></div>
+      <div class="si"><i class="fa-solid fa-file-lines"></i><span>Cuestionario de Contexto</span></div>
+      <div class="si"><i class="fa-solid fa-file-contract"></i><span>Consulta Documentos Firmados</span></div>
+    </div>
+    <div class="mn"><i class="fa-solid fa-car ico"></i><span style="flex:1">Estacionamiento</span></div>
+    <div class="mn"><i class="fa-solid fa-bus ico"></i><span style="flex:1">IberoBus en Linea</span></div>
+    <div class="mn"><i class="fa-solid fa-comments ico"></i><span style="flex:1">Dialogremos</span></div>
+    <div class="mn"><i class="fa-solid fa-person-booth ico"></i><span style="flex:1">Votación al Senado</span></div>
+  </nav>
+
+  <div class="content-col">
+    <div class="breadcrumb-bar">
+      <ul class="bc-ul">
+        <li><a href="dashboard.html"><i class="fa-solid fa-house"></i>&nbsp;SERVICIOS EN LÍNEA</a></li>
+        <li><a><i class="fa-solid fa-display"></i>&nbsp;SERVICIOS ESCOLARES</a></li>
+        <li><a><i class="fa-solid fa-rectangle-list"></i>&nbsp;DATOS ESCOLARES</a></li>
+        <li><a>HISTORIA ACADÉMICA</a></li>
+      </ul>
+    </div>
+    <div class="content-area">
+      <div class="kardex-header">
+        <div style="text-align:center;margin-bottom:8px;">
+          <button class="kardex-print" onclick="window.print()"><i class="fa-solid fa-print"></i>&nbsp;Imprimir</button>
+        </div>
+        <h5 style="font-size:13px;margin:0 0 4px;">Información al 14 de Junio de 2026.</h5>
+        <h5 style="font-size:13px;font-weight:600;margin:0;">MATERIAS CURSADAS</h5>
+      </div>
+      <div id="kardex-accordion"></div>
+      <div class="kardex-footer">CRÉDITOS: 332 &nbsp;&nbsp;&nbsp; PROMEDIO: 8.3</div>
+      <div class="kardex-note">Este documento es sólo de carácter informativo.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var kardexData = [
+    { p:'PRIMAVERA-2026', m:[
+      ['801','','0','AC','Z','--','REQUISITO DE INGLÉS PARA NEGOCIOS A'],
+      ['22262','FN009','8','8','D','--','FINANZAS CORPORATIVAS'],
+      ['24306','ST119','8','9','C','--','TALLER DE ALGORITMOS Y PROGRAMACIÓN'],
+      ['24318','MT126','6','6','H','--','ESTADÍSTICA II'],
+      ['24702','ME016','8','9','A','--','PUBLICIDAD'],
+      ['21145','ME024','8','9','E','--','RELACIONES PÚBLICAS'],
+      ['80221','ME029','8','9','A','--','PLANIFICACIÓN ESTRATÉGICA DE MEDIOS'],
+      ['80368','EN127','8','6','J','--','ECONOMÍA'],
+    ]},
+    { p:'OTOÑO-2025', m:[
+      ['23892','RU102','8','9','C4','--','INNOVACIÓN Y EMPRENDIMIENTO SUSTENTABLE'],
+      ['23915','ME013','8','8','C','--','INTERPERSONALIDAD Y TRASCENDENCIAS'],
+      ['24272','ST112','8','9','K1','--','ESTRATEGIA DE DISTRIBUCIÓN'],
+      ['80210','ME019','6','7','B','--','BASES DE DATOS Y ANÁLISIS DE LA INFORMACIÓN'],
+      ['80281','ME030','6','8','A','--','INTRODUCCIÓN AL DISEÑO ESTRATÉGICO'],
+      ['80360','ME033','6','8','C','--','CONSTRUCCIÓN DE DEMOCRACIA Y SOSTENIBILIDAD'],
+      ['80218','EN128','8','9','H','--','INVESTIGACIÓN CUANTITATIVA'],
+    ]},
+    { p:'VERANO-2025', m:[
+      ['24318','MT126','6','8','C','--','ESTADÍSTICA II'],
+      ['24272','AE212','8','9','A','--','ANÁLISIS E INTERPRETACIÓN DE DATOS'],
+    ]},
+    { p:'PRIMAVERA-2025', m:[
+      ['23908','RU102','8','9','A6','--','LA PERSONA EN SU ENTORNO SOCIOAMBIENTAL'],
+      ['24076','ME014','8','9','1','--','CIUDADANÍA MUNDIAL Y MEDIO AMBIENTE'],
+      ['24318','MT126','6','8','C','--','COMUNICACIÓN INTEGRAL DE MERCADOTECNIA'],
+      ['80216','ME024','6','9','A','--','ESTRATEGIA DE PRECIO'],
+      ['80358','ME031','8','9','D','--','MERCADOTECNIA GLOBAL'],
+      ['21825','EN128','8','8','N','--','PENSAMIENTO ESTRATÉGICO'],
+      ['80376','AE212','6','8','Q','--','INTERPERSONALIDAD Y TRASCENDENCIAS'],
+    ]},
+    { p:'OTOÑO-2024', m:[
+      ['4078','ME011','8','AC','Z','--','PRERREQUISITO DE INGLÉS'],
+      ['24067','ME014','8','7','A','--','MARCAS'],
+      ['24076','ME014','8','8','A','--','COMPORTAMIENTO DEL CONSUMIDOR'],
+      ['24317','MT125','6','9','H','--','ESTADÍSTICA I'],
+      ['80219','ME027','8','9','A','--','MERCADOTECNIA DEPORTIVA'],
+      ['80361','ME034','8','8','B','--','MERCADOTECNIA Y ESTRATEGIA'],
+      ['80369','EN128','8','7','D','--','EMPRESA Y SOCIEDAD'],
+      ['80376','AE212','6','7','Q','--','LIDERAZGO Y ÉTICA EMPRESARIAL'],
+    ]},
+    { p:'VERANO-2024', m:[
+      ['20050','MT003','6','8','A1','--','MÉTODOS CUANTITATIVOS II'],
+      ['24361','FN050','8','9','B','--','APLICACIÓN DE MATEMÁTICAS FINANCIERAS'],
+    ]},
+    { p:'PRIMAVERA-2024', m:[
+      ['20050','MT003','6','BA','C','--','MÉTODOS CUANTITATIVOS II'],
+      ['22285','ME005','8','9','A','--','MERCADOTECNIA Y NEGOCIOS DIGITALES'],
+      ['24065','ME010','8','8','A','--','ESTRATEGIA DEL PRODUCTO'],
+      ['24307','ST120','8','7','F','--','TENDENCIAS TECNOLÓGICAS'],
+      ['80154','DR163','8','10','O','--','ENTORNO LEGAL'],
+      ['80314','CD049','8','8','P','--','COSTOS'],
+      ['80359','ME032','8','8','R','--','MERCADOTECNIA SOCIAL'],
+    ]},
+    { p:'OTOÑO-2023', m:[
+      ['20049','MT002','6','8','C1','--','MÉTODOS CUANTITATIVOS I'],
+      ['20195','AE010','8','9','R','--','ADMINISTRACIÓN'],
+      ['23981','LE001','8','8','ER','--','TALLER DE ESCRITURA ACADÉMICA'],
+      ['24077','PFI001','4','10','B8','--','TALLER DE INTEGRACIÓN UNIVERSITARIA'],
+      ['24259','ME015','8','8','D4','--','MERCADOTECNIA'],
+      ['24308','ST121','8','10','F4','--','TALLER DE APLICACIONES DE INFORMACIÓN'],
+      ['80313','CD048','8','9','R','--','CONTABILIDAD'],
+    ]},
+  ];
+  function buildKardex() {
+    var html = '';
+    kardexData.forEach(function(sem, i) {
+      html += '<div class="acc-item"><div class="acc-hdr" onclick="toggleAcc('+i+')" id="ah'+i+'">'+sem.p+'<span class="arr">▼</span></div>';
+      html += '<div class="acc-body" id="ab'+i+'"><table class="kt"><thead><tr><th>CVE</th><th>SIGLA</th><th>CRED</th><th>CAL</th><th>GPO</th><th>OBS</th><th>MATERIA</th></tr></thead><tbody>';
+      sem.m.forEach(function(r){ html += '<tr><td>'+r[0]+'</td><td>'+r[1]+'</td><td>'+r[2]+'</td><td>'+r[3]+'</td><td>'+r[4]+'</td><td>'+r[5]+'</td><td>'+r[6]+'</td></tr>'; });
+      html += '</tbody></table></div></div>';
+    });
+    document.getElementById('kardex-accordion').innerHTML = html;
+    toggleAcc(0);
+  }
+  function toggleAcc(i) {
+    document.getElementById('ah'+i).classList.toggle('open');
+    document.getElementById('ab'+i).classList.toggle('open');
+  }
+  function tog(id) { document.getElementById(id).classList.toggle('open'); }
+  function toggleSidebar() { document.getElementById('sidebar').classList.toggle('collapsed'); }
+  var secs = 28*60+38;
+  setInterval(function(){
+    if(secs<=0)return; secs--;
+    var m=Math.floor(secs/60),s=secs%60;
+    document.getElementById('timer').textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+  },1000);
+  buildKardex();
+</script>
+</body>
+</html>

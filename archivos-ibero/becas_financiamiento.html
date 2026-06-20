@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Sitio en Mantenimiento - IBERO</title>
+  <link rel="stylesheet" href="../css/dashboard-styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .content { margin-top: 40px; padding: 40px; text-align: center; }
+    .content h2 { font-size: 28px; color: #333; }
+    .content p { font-size: 16px; color: #555; }
+    .btn-back { display: inline-block; margin-top: 20px; padding: 8px 20px; background: #ef3e42; color: white; border-radius: 4px; font-size: 13px; }
+    .btn-back:hover { background: #c7282c; color: white; }
+  </style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-logo"><img src="../imagenes/Logo-2.png" alt="IBERO" onerror="this.outerHTML='<span>LOGO</span>'"></div>
+  <div class="topbar-spacer"></div>
+  <div class="topbar-name">233207-2 PONCE MENDEZ LUIS EDUARDO</div>
+  <div class="topbar-timer"><i class="fa-solid fa-clock"></i><span id="timer">28:38</span><span>Tiempo Restante</span></div>
+</header>
+<div class="content">
+  <i class="fa-solid fa-screwdriver-wrench" style="font-size:3rem;color:#ddd;margin-bottom:16px;display:block;"></i>
+  <h2>Sitio en mantenimiento</h2>
+  <p>Esta sección estará disponible próximamente.<br>Gracias por tu paciencia.</p>
+  <a href="../dashboard.html" class="btn-back"><i class="fa-solid fa-arrow-left"></i>&nbsp;Volver al inicio</a>
+</div>
+<script>
+  var secs = 28*60+38;
+  setInterval(function(){
+    if(secs<=0)return; secs--;
+    var m=Math.floor(secs/60),s=secs%60;
+    document.getElementById('timer').textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+  },1000);
+</script>
+</body>
+</html>

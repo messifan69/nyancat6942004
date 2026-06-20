@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Materias Inscritas - IBERO</title>
+  <link rel="stylesheet" href="../css/dashboard-styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .th2 { font-weight: 600; color: #555; font-size: 13px; padding-bottom: 8px; }
+    .boton-imprimir {
+      display: inline-block; padding: 4px 12px;
+      background: #ef3e42; color: white; border-radius: 3px;
+      font-size: 12px; margin-bottom: 12px; cursor: pointer; border: none;
+    }
+    .boton-imprimir:hover { background: #c7282c; }
+    .aviso-grid {
+      width: 700px; max-width: 100%;
+      border: 1px solid #ccc; margin: 0 auto 12px;
+      font-size: 12px;
+    }
+    .aviso-grid table { width: 100%; border-collapse: collapse; }
+    .aviso-grid th {
+      background: #f0f0f0; padding: 5px 10px;
+      text-align: center; border: 1px solid #ccc; font-size: 12px;
+    }
+    .aviso-grid td {
+      padding: 5px 10px; text-align: center;
+      border: 1px solid #ccc; font-size: 12px;
+    }
+    .aviso-table {
+      width: 699px; max-width: 100%;
+      border: 1px solid #ccc; margin: 0 auto 16px;
+      font-size: 12px; border-collapse: collapse;
+    }
+    .aviso-table td { padding: 6px 10px; text-align: center; }
+    .materias-table {
+      width: 500px; max-width: 100%;
+      border: 1px solid #ccc; margin: 0 auto 16px;
+      border-collapse: collapse; font-size: 12px;
+    }
+    .materias-table th {
+      background: #f5f5f5; padding: 5px 10px;
+      text-align: center; border: 1px solid #ccc;
+    }
+    .nota-final { text-align: center; font-size: 12px; color: #555; margin-top: 12px; }
+    .horario-title { text-align: center; font-weight: bold; font-size: 13px; margin: 16px 0 8px; }
+  </style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="sidebar-toggle" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></div>
+  <div class="topbar-logo">
+    <img src="../imagenes/Logo-2.png" alt="IBERO" onerror="this.outerHTML='<span>LOGO</span>'">
+  </div>
+  <div class="topbar-spacer"></div>
+  <div class="topbar-name">233207-2 PONCE MENDEZ LUIS EDUARDO</div>
+  <div class="topbar-timer">
+    <i class="fa-solid fa-clock"></i>
+    <span id="timer">28:38</span>
+  </div>
+  <div class="topbar-dropdown">
+    <div class="topbar-dropdown-trigger">
+      <span class="avatar-pill">LP</span>
+      <span>Mi Perfil</span>
+    </div>
+    <div class="dropdown-menu">
+      <a href="#"><i class="fa-solid fa-address-card"></i>Datos Personales</a>
+      <a href="#"><i class="fa-solid fa-flag"></i>Bloqueo</a>
+      <a href="#"><i class="fa-solid fa-comments"></i>Avisos</a>
+      <a href="#"><i class="fa-solid fa-user-lock"></i>Cambiar Contraseña</a>
+      <div class="dropdown-divider"></div>
+      <a href="../index.html"><i class="fa-solid fa-right-from-bracket"></i>Salir</a>
+    </div>
+  </div>
+</header>
+
+<div class="main-content">
+  <nav class="sidebar" id="sidebar">
+    <div class="mn" onclick="tog('sub-tes')"><i class="fa-solid fa-hand-holding-dollar ico"></i><span style="flex:1">Tesorería</span><i class="fa-solid fa-angle-down arr"></i></div>
+    <div class="sub" id="sub-tes">
+      <div class="si" onclick="window.location='../dashboard.html'"><i class="fa-regular fa-credit-card"></i><span style="flex:1">Pagos en Línea</span></div>
+      <div class="si" onclick="window.location='pagos_sucursal.html'"><i class="fa-solid fa-file-invoice"></i><span style="flex:1">Pagos en Sucursal Bancaria</span></div>
+      <div class="si" onclick="tog('sub-fact')"><i class="fa-solid fa-file-invoice-dollar"></i><span style="flex:1">Servicios de Facturación</span><i class="fa-solid fa-angle-down arr"></i></div>
+      <div class="ssub" id="sub-fact">
+        <div class="ssi">Solicitar Factura</div>
+        <div class="ssi">Descargar Factura</div>
+        <div class="ssi">Editor Datos Fiscales</div>
+      </div>
+      <div class="si" onclick="tog('sub-cons')"><i class="fa-solid fa-chart-line"></i><span style="flex:1">Consultas</span><i class="fa-solid fa-angle-down arr"></i></div>
+      <div class="ssub" id="sub-cons">
+        <div class="ssi">Estado de Cuenta</div>
+        <div class="ssi">Adeudos</div>
+        <div class="ssi">Estado de Cuenta Monedero</div>
+        <div class="ssi">Últimos Pagos</div>
+        <div class="ssi">Presupuesto de Cuotas</div>
+      </div>
+      <div class="si"><i class="fa-brands fa-paypal"></i><span style="flex:1">Domiciliación (Exclusivo clientes Paypal)</span></div>
+    </div>
+    <div class="mn"><i class="fa-solid fa-graduation-cap ico"></i><span style="flex:1">Becas y Financiamiento</span></div>
+    <div class="mn" onclick="tog('sub-esc')"><i class="fa-solid fa-display ico"></i><span style="flex:1">Servicios Escolares</span><i class="fa-solid fa-angle-down arr"></i></div>
+    <div class="sub open" id="sub-esc">
+      <div class="si" onclick="tog('sub-datos')"><i class="fa-solid fa-rectangle-list"></i><span style="flex:1">Datos Escolares</span><i class="fa-solid fa-angle-down arr"></i></div>
+      <div class="ssub open" id="sub-datos">
+        <div class="ssi" onclick="window.location='historial.html'">Historia Académica</div>
+        <div class="ssi active">Materias Inscritas</div>
+        <div class="ssi">Situación Académica</div>
+        <div class="ssi">Horarios</div>
+      </div>
+      <div class="si"><i class="fa-solid fa-person-chalkboard"></i><span>Solicitud de Reinscripción</span></div>
+      <div class="si"><i class="fa-solid fa-tty"></i><span>Reservación Exam. Departamental</span></div>
+      <div class="si"><i class="fa-solid fa-arrows-down-to-line"></i><span>Bajas Totales</span></div>
+      <div class="si"><i class="fa-solid fa-file-lines"></i><span>Examen Extraordinario y a Título de Suficiencia</span></div>
+      <div class="si"><i class="fa-solid fa-file-lines"></i><span>Cuestionario de Contexto</span></div>
+      <div class="si"><i class="fa-solid fa-file-contract"></i><span>Consulta Documentos Firmados</span></div>
+    </div>
+    <div class="mn"><i class="fa-solid fa-car ico"></i><span style="flex:1">Estacionamiento</span></div>
+    <div class="mn"><i class="fa-solid fa-bus ico"></i><span style="flex:1">IberoBus en Linea</span></div>
+    <div class="mn"><i class="fa-solid fa-comments ico"></i><span style="flex:1">Dialogremos</span></div>
+    <div class="mn"><i class="fa-solid fa-person-booth ico"></i><span style="flex:1">Votación al Senado</span></div>
+  </nav>
+
+  <div class="content-col">
+    <div class="breadcrumb-bar">
+      <ul class="bc-ul">
+        <li><a href="../dashboard.html"><i class="fa-solid fa-house"></i>&nbsp;SERVICIOS EN LÍNEA</a></li>
+        <li><a><i class="fa-solid fa-display"></i>&nbsp;SERVICIOS ESCOLARES</a></li>
+        <li><a><i class="fa-solid fa-rectangle-list"></i>&nbsp;DATOS ESCOLARES</a></li>
+        <li><a>MATERIAS INSCRITAS</a></li>
+      </ul>
+    </div>
+    <div class="content-area">
+      <p class="th2">:. SERVICIOS EN LÍNEA &gt;&gt; SERVICIOS ESCOLARES &gt;&gt; MATERIAS INSCRITAS</p>
+
+      <div style="text-align:center;margin-bottom:12px;">
+        <button class="boton-imprimir" onclick="window.print()"><i class="fa-solid fa-print"></i>&nbsp;Imprimir</button>
+      </div>
+
+      <center><p style="font-size:13px;">No tienes materias inscritas</p></center>
+
+      <br>
+
+      <div class="aviso-grid">
+        <table>
+          <tr>
+            <th>Mensaje</th>
+            <th>Fecha Hora</th>
+          </tr>
+          <tr>
+            <td>Cualquier ajuste lo puedes realizar el día</td>
+            <td>22 de Mayo de 2026 a las 10:00 hrs.</td>
+          </tr>
+        </table>
+      </div>
+
+      <table class="aviso-table">
+        <tr>
+          <td>El día 22 de mayo, los ajustes en la plataforma de servicios en línea estarán disponibles de 7:00 a 17:00. Podrás acceder a partir de la hora que se te asignó y antes de las 17:00.</td>
+        </tr>
+      </table>
+
+      <table class="materias-table">
+        <tr>
+          <th>Materia</th>
+          <th>Enero</th>
+        </tr>
+      </table>
+
+      <div class="horario-title">HORARIO DEL ALUMNO [233207-2]</div>
+
+      <p class="nota-final">Este comprobante no es un documento oficial y está sujeto al pago oportuno de tu inscripción y estar libre de adeudos.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  function tog(id) { document.getElementById(id).classList.toggle('open'); }
+  function toggleSidebar() { document.getElementById('sidebar').classList.toggle('collapsed'); }
+  var secs = 28*60+38;
+  setInterval(function(){
+    if(secs<=0)return; secs--;
+    var m=Math.floor(secs/60),s=secs%60;
+    document.getElementById('timer').textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+  },1000);
+</script>
+</body>
+</html>
