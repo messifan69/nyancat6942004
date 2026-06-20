@@ -1,0 +1,151 @@
+/* dashboard-styles.css — modern redesign */
+*, *::before, *::after { box-sizing: border-box; }
+:root {
+  --ibero-red: #ef3e42;
+  --ibero-red-dark: #d22e32;
+  --ibero-red-light: #fff1f1;
+  --bg: #f4f5f7;
+  --card-bg: #ffffff;
+  --text: #2c2c2c;
+  --text-muted: #8a8a8a;
+  --border: #e9e9ec;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+  --radius: 10px;
+}
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--text);
+  font-family: "Inter", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Helvetica Neue", "Arial", sans-serif;
+  font-size: 14px;
+}
+a { text-decoration: none; cursor: pointer; color: inherit; }
+
+/* TOPBAR */
+.topbar {
+  background: var(--card-bg);
+  display: flex; align-items: center; gap: 8px;
+  padding: 0 18px; height: 60px; width: 100%;
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  position: sticky; top: 0; z-index: 50;
+}
+.sidebar-toggle {
+  width: 36px; height: 36px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; color: var(--text); flex-shrink: 0;
+  transition: background 0.15s;
+}
+.sidebar-toggle:hover { background: var(--bg); }
+.topbar-logo {
+  height: 40px;
+  background: transparent;
+  border: none;
+  display: flex; align-items: center; justify-content: center;
+  margin-right: 8px; flex-shrink: 0;
+  padding: 4px 0;
+}
+.topbar-logo img { max-height: 40px; max-width: 170px; object-fit: contain; }
+.topbar-logo span { color: var(--ibero-red); font-size: 10px; font-weight: 600; }
+.topbar-spacer { flex: 1; }
+.topbar-name {
+  font-size: 13px; font-weight: 500; padding: 0 10px;
+  white-space: nowrap; display: none;
+}
+@media (min-width: 900px) { .topbar-name { display: flex; align-items: center; height: 60px; } }
+.topbar-timer {
+  font-size: 12.5px; padding: 6px 12px; display: flex; align-items: center; gap: 6px;
+  background: var(--bg); border-radius: 20px; color: var(--text-muted);
+  white-space: nowrap;
+}
+.topbar-timer i { color: var(--ibero-red); }
+#timer { font-weight: 700; color: var(--text); }
+.topbar-dropdown { position: relative; margin-left: 8px; }
+.topbar-dropdown-trigger {
+  font-size: 13px; cursor: pointer; display: flex; align-items: center; gap: 8px;
+  padding: 6px 12px 6px 6px; border-radius: 20px; white-space: nowrap;
+  background: var(--bg); transition: background 0.15s;
+}
+.topbar-dropdown-trigger:hover { background: #ececef; }
+.topbar-dropdown-trigger .avatar-pill {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--ibero-red); color: white;
+  display: flex; align-items: center; justify-content: center; font-size: 13px;
+}
+.topbar-dropdown-trigger::after { content: '▾'; font-size: 9px; margin-left: 2px; color: var(--text-muted); }
+.topbar-dropdown:hover .dropdown-menu { display: block; }
+.dropdown-menu {
+  display: none; position: absolute; right: 0; top: 48px;
+  background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius);
+  min-width: 230px; z-index: 999; box-shadow: var(--shadow-md); padding: 6px;
+}
+.dropdown-menu a {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 12px; font-size: 13px; border-radius: 8px; color: var(--text);
+}
+.dropdown-menu a i { color: var(--ibero-red); width: 16px; text-align: center; }
+.dropdown-menu a:hover { background: var(--ibero-red-light); }
+.dropdown-divider { margin: 6px 4px; border-top: 1px solid var(--border); }
+
+/* LAYOUT */
+.main-content { display: flex; min-height: calc(100vh - 60px); }
+
+/* SIDEBAR */
+.sidebar {
+  width: 260px; min-width: 260px; background: var(--card-bg);
+  border-right: 1px solid var(--border); overflow-y: auto;
+  padding: 14px 10px; transition: width 0.2s, min-width 0.2s, padding 0.2s;
+}
+.sidebar.collapsed { width: 0; min-width: 0; padding: 14px 0; overflow: hidden; border-right: none; }
+
+.mn {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px; font-size: 13.5px; color: var(--text); font-weight: 600;
+  border-radius: 8px; cursor: pointer; margin-bottom: 2px; white-space: nowrap;
+  transition: background 0.15s;
+}
+.mn:hover { background: var(--ibero-red-light); color: var(--ibero-red); }
+.mn .ico { color: var(--ibero-red); font-size: 1rem; min-width: 18px; text-align: center; }
+.mn .arr { font-size: 10px; color: var(--text-muted); margin-left: auto; transition: transform 0.15s; }
+
+.sub { display: none; padding-left: 6px; margin: 2px 0 6px; }
+.sub.open { display: block; }
+.si {
+  display: flex; align-items: center; gap: 9px;
+  padding: 8px 12px 8px 26px; font-size: 12.5px; color: var(--text-muted);
+  border-radius: 8px; cursor: pointer; white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+}
+.si:hover { background: var(--ibero-red-light); color: var(--ibero-red); }
+.si.active { color: var(--ibero-red); font-weight: 600; background: var(--ibero-red-light); }
+.si .arr { font-size: 9px; margin-left: auto; }
+
+.ssub { display: none; padding-left: 10px; }
+.ssub.open { display: block; }
+.ssi {
+  display: flex; align-items: center;
+  padding: 7px 12px 7px 40px; font-size: 12px; color: var(--text-muted);
+  border-radius: 8px; cursor: pointer; white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+}
+.ssi:hover { background: var(--ibero-red-light); color: var(--ibero-red); }
+.ssi.active { color: var(--ibero-red); font-weight: 600; background: var(--ibero-red-light); }
+
+/* CONTENT */
+.content-col { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+.breadcrumb-bar {
+  font-size: 12px; color: var(--text-muted); padding: 12px 24px;
+  background: transparent;
+}
+.bc-ul { display: flex; align-items: center; gap: 6px; list-style: none; margin: 0; padding: 0; flex-wrap: wrap; }
+.bc-ul li+li::before { content: '/'; color: #ccc; margin-right: 6px; }
+.bc-ul a { display: flex; align-items: center; gap: 5px; }
+
+.content-area {
+  flex: 1; padding: 8px 24px 32px;
+}
+
+/* shared card look for pages */
+.card {
+  background: var(--card-bg); border-radius: var(--radius);
+  box-shadow: var(--shadow-sm); border: 1px solid var(--border);
+}

@@ -1,0 +1,19 @@
+/* styles.css - Login */
+*, *::before, *::after { box-sizing: border-box; }
+body { background: #f7f7f7; }
+.input, .input.is-medium { background-color: #ffffff !important; color: #363636 !important; border: 1px solid #dbdbdb !important; }
+.input::placeholder { color: #aaa !important; }
+.login-box { max-width: 380px; margin: auto; background: white; }
+.logo-box { padding: 12px; background: white; }
+.logo-placeholder { height: 60px; display: flex; align-items: center; justify-content: center; }
+.logo-placeholder img { max-height: 50px; max-width: 220px; object-fit: contain; }
+.recaptcha-mock { background: #f9f9f9; border: 1px solid #c1c1c1; border-radius: 3px; width: 304px; height: 78px; display: flex; align-items: center; gap: 12px; padding: 0 16px; margin-bottom: 8px; }
+.recaptcha-check { width: 28px; height: 28px; border: 2px solid #c1c1c1; border-radius: 3px; cursor: pointer; display: flex; align-items: center; justify-content: center; background: white; flex-shrink: 0; }
+.recaptcha-check.checked { border-color: #4caf50; background: #4caf50; }
+.recaptcha-label { font-size: 14px; color: #333; flex: 1; }
+.recaptcha-logo { text-align: center; font-size: 9px; color: #999; line-height: 1.4; }
+.recaptcha-logo .fa-shield-halved { font-size: 20px; color: #4a90d9; display: block; margin-bottom: 2px; }
+.login-links { display: flex; justify-content: space-between; margin-top: 8px; font-size: 13px; }
+.login-links a { color: #7a7a7a; }
+.ayuda-list { padding: 13px; text-align: justify; }
+.ayuda-list li { margin-bottom: 14px; font-size: 13px; line-height: 1.6; list-style: none; }
